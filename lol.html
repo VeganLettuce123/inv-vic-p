@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>XV Victoria — Esta invitación es personal.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{ --rosa:#d98b8b; --texto:#6e4a4a; }
+    *{box-sizing:border-box}
+    body{ margin:0; font-family:Poppins, sans-serif; color:var(--texto); background:#fff; display:flex; min-height:100vh; align-items:center; justify-content:center; }
+    .wrap{ width:min(720px, 100%); padding:12px; display:flex; flex-direction:column; align-items:center; gap:14px; }
+    .card{ width:100%; background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 8px 28px rgba(0,0,0,.12); border:1px solid #f2d5d8; }
+    .card img{ display:block; width:100%; height:auto; }
+    .cta{ width:100%; display:flex; flex-direction:column; align-items:center; gap:8px; padding:10px 0; background:#fff; }
+    .mensaje{ font-size:14px; font-weight:500; color:var(--texto); }
+    .btn{ display:inline-block; padding:12px 18px; border-radius:999px; text-decoration:none; color:#6e4a4a; border:2px solid var(--rosa); background:linear-gradient(#fff,#fff) padding-box, radial-gradient(120% 120% at 0% 0%, #f8e6e9, #fff) border-box; font-weight:600; box-shadow:0 8px 22px rgba(0,0,0,.12); transition:transform .05s ease; }
+    .btn:active{ transform:scale(.98) }
+    audio{ display:none; }
+  </style>
+</head>
+<body>
+  <audio loop id="myAudio" src="musica.mp3" type="audio/mp3"></audio>
+  <main class="wrap" role="main">
+    <div class="card">
+      <img id="invit" alt="Invitación XV Victoria" src="invitacion.jpg">
+      <div class="cta">
+        <div class="mensaje">Esta invitación es personal.</div>
+        <a class="btn" href="https://api.whatsapp.com/send?phone=+528331004531&text=Confirmo%20Asistencia%20a%20los%20XV%20de%20Victoria%20%F0%9F%8E%89%F0%9F%92%83">Confirmar asistencia</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const audio = document.getElementById('myAudio');
+
+    // Click en <body> o <main> o img  pausa o reanuda el audio
+    function toggleAudio() {
+      if (audio.paused) {
+        audio.play().catch(err => console.log("Error al reproducir:", err));
+      } else {
+        audio.pause();
+      }
+    }
+
+    document.body.addEventListener('click', toggleAudio);
+    document.querySelector('main').addEventListener('click', toggleAudio);
+    document.getElementById('invit').addEventListener('click' , toggleAudio)
+  </script>
+</body>
+
+</html>
